@@ -248,9 +248,9 @@ nodes:
     configuration: |-
       Building configuration...
 
-      Current configuration : 5370 bytes
+      Current configuration : 5405 bytes
       !
-      ! Last configuration change at 12:55:59 UTC Sat Apr 24 2021 by cisco
+      ! Last configuration change at 19:04:34 UTC Sat Apr 24 2021 by cisco
       !
       version 15.2
       service timestamps debug datetime msec
@@ -263,6 +263,12 @@ nodes:
       boot-start-marker
       boot-end-marker
       !
+      !
+      vrf definition mgmt
+       rd 65535:10
+       !
+       address-family ipv4
+       exit-address-family
       !
       no logging console
       !
@@ -285,9 +291,6 @@ nodes:
       !
       !
       vtp mode transparent
-      !
-      ip vrf mgmt
-       rd 65535:10
       !
       !
       !
@@ -330,7 +333,7 @@ nodes:
       !
       !
       interface Loopback0
-       ip vrf forwarding mgmt
+       vrf forwarding mgmt
        ip address 172.16.0.11 255.255.255.255
       !
       interface Port-channel12
@@ -383,28 +386,28 @@ nodes:
       !
       interface GigabitEthernet1/0
        no switchport
-       ip vrf forwarding mgmt
+       vrf forwarding mgmt
        ip address 172.16.255.1 255.255.255.0
        negotiation auto
       !
       interface Vlan112
        description s1-s2 core mgmt vrf
-       ip vrf forwarding mgmt
+       vrf forwarding mgmt
        ip address 172.16.1.1 255.255.255.252
       !
       interface Vlan113
        description s1-s3 core mgmt vrf
-       ip vrf forwarding mgmt
+       vrf forwarding mgmt
        ip address 172.16.1.5 255.255.255.252
       !
       interface Vlan115
        description s1-dc mgmt vrf
-       ip vrf forwarding mgmt
+       vrf forwarding mgmt
        ip address 172.16.1.29 255.255.255.252
       !
       interface Vlan119
        description s1-rtr mgmt vrf
-       ip vrf forwarding mgmt
+       vrf forwarding mgmt
        ip address 172.16.1.25 255.255.255.252
       !
       router ospf 10 vrf mgmt
@@ -509,9 +512,9 @@ nodes:
     configuration: |-
       Building configuration...
 
-      Current configuration : 5162 bytes
+      Current configuration : 5200 bytes
       !
-      ! Last configuration change at 12:45:05 UTC Sat Apr 24 2021 by cisco
+      ! Last configuration change at 19:06:29 UTC Sat Apr 24 2021 by cisco
       !
       version 15.2
       service timestamps debug datetime msec
@@ -524,6 +527,12 @@ nodes:
       boot-start-marker
       boot-end-marker
       !
+      !
+      vrf definition mgmt
+       rd 65535:10
+       !
+       address-family ipv4
+       exit-address-family
       !
       no logging console
       !
@@ -546,9 +555,6 @@ nodes:
       !
       !
       vtp mode transparent
-      !
-      ip vrf mgmt
-       rd 65535:10
       !
       !
       !
@@ -591,7 +597,7 @@ nodes:
       !
       !
       interface Loopback0
-       ip vrf forwarding mgmt
+       vrf forwarding mgmt
        ip address 172.16.0.21 255.255.255.255
       !
       interface Port-channel12
@@ -644,22 +650,22 @@ nodes:
       !
       interface Vlan112
        description s1-s2 core mgmt vrf
-       ip vrf forwarding mgmt
+       vrf forwarding mgmt
        ip address 172.16.1.2 255.255.255.252
       !
       interface Vlan124
        description s2-s4 core mgmt vrf
-       ip vrf forwarding mgmt
+       vrf forwarding mgmt
        ip address 172.16.1.9 255.255.255.252
       !
       interface Vlan125
        description s2-dc mgmt vrf
-       ip vrf forwarding mgmt
+       vrf forwarding mgmt
        ip address 172.16.1.37 255.255.255.252
       !
       interface Vlan129
        description s2-rtr mgmt vrf
-       ip vrf forwarding mgmt
+       vrf forwarding mgmt
        ip address 172.16.1.33 255.255.255.252
       !
       router ospf 10 vrf mgmt
@@ -759,9 +765,9 @@ nodes:
     configuration: |-
       Building configuration...
 
-      Current configuration : 5054 bytes
+      Current configuration : 5095 bytes
       !
-      ! Last configuration change at 11:09:57 UTC Sat Apr 24 2021
+      ! Last configuration change at 19:03:42 UTC Sat Apr 24 2021
       !
       version 15.2
       service timestamps debug datetime msec
@@ -774,6 +780,12 @@ nodes:
       boot-start-marker
       boot-end-marker
       !
+      !
+      vrf definition mgmt
+       rd 65535:10
+       !
+       address-family ipv4
+       exit-address-family
       !
       no logging console
       !
@@ -796,9 +808,6 @@ nodes:
       !
       !
       vtp mode transparent
-      !
-      ip vrf mgmt
-       rd 65535:10
       !
       !
       !
@@ -838,7 +847,7 @@ nodes:
       !
       !
       interface Loopback0
-       ip vrf forwarding mgmt
+       vrf forwarding mgmt
        ip address 172.16.0.31 255.255.255.255
       !
       interface Port-channel1
@@ -894,17 +903,17 @@ nodes:
       !
       interface Vlan113
        description s1-s3 core mgmt vrf
-       ip vrf forwarding mgmt
+       vrf forwarding mgmt
        ip address 172.16.1.6 255.255.255.252
       !
       interface Vlan132
        description s3 core-dist mgmt vrf
-       ip vrf forwarding mgmt
+       vrf forwarding mgmt
        ip address 172.16.1.17 255.255.255.252
       !
       interface Vlan134
        description s3-s4 core mgmt vrf
-       ip vrf forwarding mgmt
+       vrf forwarding mgmt
        ip address 172.16.1.13 255.255.255.252
       !
       router ospf 10 vrf mgmt
@@ -1003,9 +1012,9 @@ nodes:
     configuration: |-
       Building configuration...
 
-      Current configuration : 5055 bytes
+      Current configuration : 5096 bytes
       !
-      ! Last configuration change at 11:14:00 UTC Sat Apr 24 2021
+      ! Last configuration change at 19:04:58 UTC Sat Apr 24 2021
       !
       version 15.2
       service timestamps debug datetime msec
@@ -1018,6 +1027,12 @@ nodes:
       boot-start-marker
       boot-end-marker
       !
+      !
+      vrf definition mgmt
+       rd 65535:10
+       !
+       address-family ipv4
+       exit-address-family
       !
       no logging console
       !
@@ -1040,9 +1055,6 @@ nodes:
       !
       !
       vtp mode transparent
-      !
-      ip vrf mgmt
-       rd 65535:10
       !
       !
       !
@@ -1082,7 +1094,7 @@ nodes:
       !
       !
       interface Loopback0
-       ip vrf forwarding mgmt
+       vrf forwarding mgmt
        ip address 172.16.0.41 255.255.255.255
       !
       interface Port-channel1
@@ -1138,17 +1150,17 @@ nodes:
       !
       interface Vlan124
        description s2-s4 core mgmt vrf
-       ip vrf forwarding mgmt
+       vrf forwarding mgmt
        ip address 172.16.1.10 255.255.255.252
       !
       interface Vlan134
        description s3-s4 core mgmt vrf
-       ip vrf forwarding mgmt
+       vrf forwarding mgmt
        ip address 172.16.1.14 255.255.255.252
       !
       interface Vlan142
        description s4 core-dist mgmt vrf
-       ip vrf forwarding mgmt
+       vrf forwarding mgmt
        ip address 172.16.1.21 255.255.255.252
       !
       router ospf 10 vrf mgmt
@@ -1247,9 +1259,9 @@ nodes:
     configuration: |-
       Building configuration...
 
-      Current configuration : 3948 bytes
+      Current configuration : 3995 bytes
       !
-      ! Last configuration change at 11:13:46 UTC Sat Apr 24 2021
+      ! Last configuration change at 18:59:36 UTC Sat Apr 24 2021
       !
       version 15.2
       service timestamps debug datetime msec
@@ -1262,6 +1274,12 @@ nodes:
       boot-start-marker
       boot-end-marker
       !
+      !
+      vrf definition mgmt
+       rd 65535:10
+       !
+       address-family ipv4
+       exit-address-family
       !
       no logging console
       !
@@ -1284,9 +1302,6 @@ nodes:
       !
       !
       vtp mode transparent
-      !
-      ip vrf mgmt
-       rd 65535:10
       !
       !
       !
@@ -1320,7 +1335,7 @@ nodes:
       !
       !
       interface Loopback0
-       ip vrf forwarding mgmt
+       vrf forwarding mgmt
        ip address 172.16.0.32 255.255.255.255
       !
       interface Port-channel1
@@ -1350,7 +1365,7 @@ nodes:
       !
       interface Vlan132
        description desc s3 core-dist mgmt vrf
-       ip vrf forwarding mgmt
+       vrf forwarding mgmt
        ip address 172.16.1.18 255.255.255.252
       !
       router ospf 10 vrf mgmt
@@ -1447,9 +1462,9 @@ nodes:
     configuration: |-
       Building configuration...
 
-      Current configuration : 3948 bytes
+      Current configuration : 3995 bytes
       !
-      ! Last configuration change at 11:15:42 UTC Sat Apr 24 2021
+      ! Last configuration change at 19:01:23 UTC Sat Apr 24 2021
       !
       version 15.2
       service timestamps debug datetime msec
@@ -1462,6 +1477,12 @@ nodes:
       boot-start-marker
       boot-end-marker
       !
+      !
+      vrf definition mgmt
+       rd 65535:10
+       !
+       address-family ipv4
+       exit-address-family
       !
       no logging console
       !
@@ -1484,9 +1505,6 @@ nodes:
       !
       !
       vtp mode transparent
-      !
-      ip vrf mgmt
-       rd 65535:10
       !
       !
       !
@@ -1520,7 +1538,7 @@ nodes:
       !
       !
       interface Loopback0
-       ip vrf forwarding mgmt
+       vrf forwarding mgmt
        ip address 172.16.0.42 255.255.255.255
       !
       interface Port-channel1
@@ -1550,7 +1568,7 @@ nodes:
       !
       interface Vlan142
        description desc s4 core-dist mgmt vrf
-       ip vrf forwarding mgmt
+       vrf forwarding mgmt
        ip address 172.16.1.22 255.255.255.252
       !
       router ospf 10 vrf mgmt
@@ -1682,99 +1700,100 @@ nodes:
     node_definition: csr1000v
     x: -1350
     y: 100
-    configuration: "Building configuration...\n\nCurrent configuration : 6834 bytes\n\
-      !\n! Last configuration change at 11:54:07 UTC Sat Apr 24 2021\n!\nversion 16.11\n\
+    configuration: "Building configuration...\n\nCurrent configuration : 6881 bytes\n\
+      !\n! Last configuration change at 19:11:20 UTC Sat Apr 24 2021\n!\nversion 16.11\n\
       service timestamps debug datetime msec\nservice timestamps log datetime msec\n\
       ! Call-home is enabled by Smart-Licensing.\nservice call-home\nplatform qfp\
       \ utilization monitor load 80\nno platform punt-keepalive disable-kernel-core\n\
       platform console serial\n!\nhostname s1-rtr01\n!\nboot-start-marker\nboot-end-marker\n\
-      !\n!\nno logging console\n!\naaa new-model\n!\n!\naaa authentication login default\
+      !\n!\nvrf definition mgmt\n rd 65535:10\n !\n address-family ipv4\n exit-address-family\n\
+      !\nno logging console\n!\naaa new-model\n!\n!\naaa authentication login default\
       \ local\naaa authorization exec default local\n!\n!\n!\n!\n!\naaa session-id\
       \ common\ncall-home\n ! If contact email address in call-home is configured\
       \ as sch-smart-licensing@cisco.com\n ! the email address configured in Cisco\
       \ Smart License Portal will be used as contact email address to send SCH notifications.\n\
       \ contact-email-addr sch-smart-licensing@cisco.com\n profile \"CiscoTAC-1\"\n\
       \  active\n  destination transport-method http\n  no destination transport-method\
-      \ email\n!\nip vrf mgmt\n rd 65535:10\n!\n!\n!\n!\n!\n!\n!\nip domain name aeon.local\n\
-      !\n!\n!\nlogin on-success log\n!\n!\n!\n!\n!\n!\n!\nsubscriber templating\n\
-      !\n!\n!\n!\n!\n!\nmultilink bundle-name authenticated\n!\n!\n!\n!\n!\n!\n!\n\
-      !\n!\n!\n!\n!\n!\ncrypto pki trustpoint TP-self-signed-1134474696\n enrollment\
-      \ selfsigned\n subject-name cn=IOS-Self-Signed-Certificate-1134474696\n revocation-check\
-      \ none\n rsakeypair TP-self-signed-1134474696\n!\ncrypto pki trustpoint SLA-TrustPoint\n\
-      \ enrollment pkcs12\n revocation-check crl\n!\n!\ncrypto pki certificate chain\
-      \ TP-self-signed-1134474696\n certificate self-signed 01\n  30820330 30820218\
-      \ A0030201 02020101 300D0609 2A864886 F70D0101 05050030\n  31312F30 2D060355\
-      \ 04031326 494F532D 53656C66 2D536967 6E65642D 43657274\n  69666963 6174652D\
-      \ 31313334 34373436 3936301E 170D3231 30343234 31313137\n  34365A17 0D333030\
-      \ 31303130 30303030 305A3031 312F302D 06035504 03132649\n  4F532D53 656C662D\
-      \ 5369676E 65642D43 65727469 66696361 74652D31 31333434\n  37343639 36308201\
-      \ 22300D06 092A8648 86F70D01 01010500 0382010F 00308201\n  0A028201 0100A9F0\
-      \ 4B991963 5776B917 22D7892B 40F451D4 406A3AAF 873ACF50\n  66E18242 73049366\
-      \ 78A1FA47 7BE5E455 3FCAF2C6 8E2E6599 0043E42A 9582ADFB\n  BD47D50D 0D175811\
-      \ 8073934E 896B1199 6AE56040 AA5F16DF EF330C5B 40DB6DA3\n  18381111 F86BEE5B\
-      \ 1998B965 761E9C8C DB6F10EB 54CD5A36 5D3FAAA6 48395959\n  F528CCA1 8FD9CDA8\
-      \ D1814E8A C94808B0 60DA7B5E 6969AD7C D4E60F97 155DA394\n  2C378397 BF44CA79\
-      \ 7E2D3919 7B08FB69 26B5BCE9 E0270BA3 95BA1595 DA988B56\n  7D6A53C4 CCE7C013\
-      \ C7E1206E 48E74BEE 67D9502F B3A8F523 656A2E01 EF3EBF4E\n  3E2E087F B589720D\
-      \ 2198258C 42917604 C5153156 9639F8D3 E3EF7AE0 519804BD\n  2480AB35 EA570203\
-      \ 010001A3 53305130 0F060355 1D130101 FF040530 030101FF\n  301F0603 551D2304\
-      \ 18301680 14853BC1 4324960D 2696C5BC 6C1E6221 E3A02D5B\n  95301D06 03551D0E\
-      \ 04160414 853BC143 24960D26 96C5BC6C 1E6221E3 A02D5B95\n  300D0609 2A864886\
-      \ F70D0101 05050003 82010100 7B9C9435 B39FCD07 D505E11A\n  BFF3FD3A 7F3D6CC2\
-      \ A30834B6 A6AC829A A59B0474 E2A755DA 24C92557 58B32781\n  DC52AA8E C348E259\
-      \ AE44675B F712DB0A 5592DB40 560C7EDF ABA37DE3 273259F1\n  102BE9E0 A5F4C5A1\
-      \ D81611B1 AA3A7FF9 ECAC8F6C F9AE6C88 E3A3368D 09D30998\n  B0582853 67F46B33\
-      \ C8E8BA91 456761C0 57D30402 BEF23EF6 5CABDFD1 165F390A\n  92930732 8D3F2463\
-      \ CF338A46 0EA67645 31812FA4 9B985C55 092F260A 83F64363\n  410C100C 8D97ED33\
-      \ 20CB878C BE59A170 2449FFF2 9E55F27F 610256B6 FFB98DAB\n  27E6F571 42E04B99\
-      \ EB7062CF 9D6BBE3E 2D2C9692 46515223 E5240F35 06DDF730\n  B498D0B2 61C24CD1\
-      \ F38DA150 93417465 5C7CB45F\n  \tquit\ncrypto pki certificate chain SLA-TrustPoint\n\
-      \ certificate ca 01\n  30820321 30820209 A0030201 02020101 300D0609 2A864886\
-      \ F70D0101 0B050030\n  32310E30 0C060355 040A1305 43697363 6F312030 1E060355\
-      \ 04031317 43697363\n  6F204C69 63656E73 696E6720 526F6F74 20434130 1E170D31\
-      \ 33303533 30313934\n  3834375A 170D3338 30353330 31393438 34375A30 32310E30\
-      \ 0C060355 040A1305\n  43697363 6F312030 1E060355 04031317 43697363 6F204C69\
-      \ 63656E73 696E6720\n  526F6F74 20434130 82012230 0D06092A 864886F7 0D010101\
-      \ 05000382 010F0030\n  82010A02 82010100 A6BCBD96 131E05F7 145EA72C 2CD686E6\
-      \ 17222EA1 F1EFF64D\n  CBB4C798 212AA147 C655D8D7 9471380D 8711441E 1AAF071A\
-      \ 9CAE6388 8A38E520\n  1C394D78 462EF239 C659F715 B98C0A59 5BBB5CBD 0CFEBEA3\
-      \ 700A8BF7 D8F256EE\n  4AA4E80D DB6FD1C9 60B1FD18 FFC69C96 6FA68957 A2617DE7\
-      \ 104FDC5F EA2956AC\n  7390A3EB 2B5436AD C847A2C5 DAB553EB 69A9A535 58E9F3E3\
-      \ C0BD23CF 58BD7188\n  68E69491 20F320E7 948E71D7 AE3BCC84 F10684C7 4BC8E00F\
-      \ 539BA42B 42C68BB7\n  C7479096 B4CB2D62 EA2F505D C7B062A4 6811D95B E8250FC4\
-      \ 5D5D5FB8 8F27D191\n  C55F0D76 61F9A4CD 3D992327 A8BB03BD 4E6D7069 7CBADF8B\
-      \ DF5F4368 95135E44\n  DFC7C6CF 04DD7FD1 02030100 01A34230 40300E06 03551D0F\
-      \ 0101FF04 04030201\n  06300F06 03551D13 0101FF04 05300301 01FF301D 0603551D\
-      \ 0E041604 1449DC85\n  4B3D31E5 1B3E6A17 606AF333 3D3B4C73 E8300D06 092A8648\
-      \ 86F70D01 010B0500\n  03820101 00507F24 D3932A66 86025D9F E838AE5C 6D4DF6B0\
-      \ 49631C78 240DA905\n  604EDCDE FF4FED2B 77FC460E CD636FDB DD44681E 3A5673AB\
-      \ 9093D3B1 6C9E3D8B\n  D98987BF E40CBD9E 1AECA0C2 2189BB5C 8FA85686 CD98B646\
-      \ 5575B146 8DFC66A8\n  467A3DF4 4D565700 6ADF0F0D CF835015 3C04FF7C 21E878AC\
-      \ 11BA9CD2 55A9232C\n  7CA7B7E6 C1AF74F6 152E99B7 B1FCF9BB E973DE7F 5BDDEB86\
-      \ C71E3B49 1765308B\n  5FB0DA06 B92AFE7F 494E8A9E 07B85737 F3A58BE1 1A48A229\
-      \ C37C1E69 39F08678\n  80DDCD16 D6BACECA EEBC7CF9 8428787B 35202CDC 60E4616A\
-      \ B623CDBD 230E3AFB\n  418616A9 4093E049 4D10AB75 27E86F73 932E35B5 8862FDAE\
-      \ 0275156F 719BB2F0\n  D697DF7F 28\n  \tquit\n!\nlicense udi pid CSR1000V sn\
-      \ 936TQIQ9T3C\ndiagnostic bootup level minimal\n!\nspanning-tree mode rapid-pvst\n\
-      spanning-tree extend system-id\nmemory free low-watermark processor 80526\n\
-      !\n!\n!\nusername cisco privilege 15 secret 5 $1$9lbU$9jMrJNR2UJ80ChKBcnIm21\n\
-      !\nredundancy\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n\
-      !\n!\n!\ninterface Loopback0\n ip vrf forwarding mgmt\n ip address 172.16.0.19\
-      \ 255.255.255.255\n!\ninterface GigabitEthernet1\n no ip address\n negotiation\
-      \ auto\n no mop enabled\n no mop sysid\n service instance 999 ethernet\n  encapsulation\
-      \ dot1q 999\n !\n!\ninterface GigabitEthernet1.119\n encapsulation dot1Q 119\n\
-      \ ip vrf forwarding mgmt\n ip address 172.16.1.26 255.255.255.252\n!\ninterface\
-      \ GigabitEthernet2\n no ip address\n shutdown\n negotiation auto\n no mop enabled\n\
-      \ no mop sysid\n!\ninterface GigabitEthernet3\n no ip address\n shutdown\n negotiation\
-      \ auto\n no mop enabled\n no mop sysid\n!\ninterface GigabitEthernet4\n no ip\
-      \ address\n shutdown\n negotiation auto\n no mop enabled\n no mop sysid\n!\n\
-      router ospf 10 vrf mgmt\n router-id 172.16.1.19\n passive-interface default\n\
-      \ no passive-interface GigabitEthernet1.119\n network 172.16.0.0 0.0.255.255\
-      \ area 0\n!\nip forward-protocol nd\nip http server\nip http authentication\
-      \ local\nip http secure-server\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\ncontrol-plane\n\
-      !\n!\n!\n!\n!\n!\nline con 0\n exec-timeout 0 0\n logging synchronous\n stopbits\
-      \ 1\nline vty 0 4\n logging synchronous\n transport input all\nline vty 5 15\n\
-      \ logging synchronous\n transport input all\n!\n!\n!\n!\n!\n!\nend"
+      \ email\n!\n!\n!\n!\n!\n!\n!\nip domain name aeon.local\n!\n!\n!\nlogin on-success\
+      \ log\n!\n!\n!\n!\n!\n!\n!\nsubscriber templating\n!\n!\n!\n!\n!\n!\nmultilink\
+      \ bundle-name authenticated\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\ncrypto pki\
+      \ trustpoint TP-self-signed-1134474696\n enrollment selfsigned\n subject-name\
+      \ cn=IOS-Self-Signed-Certificate-1134474696\n revocation-check none\n rsakeypair\
+      \ TP-self-signed-1134474696\n!\ncrypto pki trustpoint SLA-TrustPoint\n enrollment\
+      \ pkcs12\n revocation-check crl\n!\n!\ncrypto pki certificate chain TP-self-signed-1134474696\n\
+      \ certificate self-signed 01\n  30820330 30820218 A0030201 02020101 300D0609\
+      \ 2A864886 F70D0101 05050030\n  31312F30 2D060355 04031326 494F532D 53656C66\
+      \ 2D536967 6E65642D 43657274\n  69666963 6174652D 31313334 34373436 3936301E\
+      \ 170D3231 30343234 31313137\n  34365A17 0D333030 31303130 30303030 305A3031\
+      \ 312F302D 06035504 03132649\n  4F532D53 656C662D 5369676E 65642D43 65727469\
+      \ 66696361 74652D31 31333434\n  37343639 36308201 22300D06 092A8648 86F70D01\
+      \ 01010500 0382010F 00308201\n  0A028201 0100A9F0 4B991963 5776B917 22D7892B\
+      \ 40F451D4 406A3AAF 873ACF50\n  66E18242 73049366 78A1FA47 7BE5E455 3FCAF2C6\
+      \ 8E2E6599 0043E42A 9582ADFB\n  BD47D50D 0D175811 8073934E 896B1199 6AE56040\
+      \ AA5F16DF EF330C5B 40DB6DA3\n  18381111 F86BEE5B 1998B965 761E9C8C DB6F10EB\
+      \ 54CD5A36 5D3FAAA6 48395959\n  F528CCA1 8FD9CDA8 D1814E8A C94808B0 60DA7B5E\
+      \ 6969AD7C D4E60F97 155DA394\n  2C378397 BF44CA79 7E2D3919 7B08FB69 26B5BCE9\
+      \ E0270BA3 95BA1595 DA988B56\n  7D6A53C4 CCE7C013 C7E1206E 48E74BEE 67D9502F\
+      \ B3A8F523 656A2E01 EF3EBF4E\n  3E2E087F B589720D 2198258C 42917604 C5153156\
+      \ 9639F8D3 E3EF7AE0 519804BD\n  2480AB35 EA570203 010001A3 53305130 0F060355\
+      \ 1D130101 FF040530 030101FF\n  301F0603 551D2304 18301680 14853BC1 4324960D\
+      \ 2696C5BC 6C1E6221 E3A02D5B\n  95301D06 03551D0E 04160414 853BC143 24960D26\
+      \ 96C5BC6C 1E6221E3 A02D5B95\n  300D0609 2A864886 F70D0101 05050003 82010100\
+      \ 7B9C9435 B39FCD07 D505E11A\n  BFF3FD3A 7F3D6CC2 A30834B6 A6AC829A A59B0474\
+      \ E2A755DA 24C92557 58B32781\n  DC52AA8E C348E259 AE44675B F712DB0A 5592DB40\
+      \ 560C7EDF ABA37DE3 273259F1\n  102BE9E0 A5F4C5A1 D81611B1 AA3A7FF9 ECAC8F6C\
+      \ F9AE6C88 E3A3368D 09D30998\n  B0582853 67F46B33 C8E8BA91 456761C0 57D30402\
+      \ BEF23EF6 5CABDFD1 165F390A\n  92930732 8D3F2463 CF338A46 0EA67645 31812FA4\
+      \ 9B985C55 092F260A 83F64363\n  410C100C 8D97ED33 20CB878C BE59A170 2449FFF2\
+      \ 9E55F27F 610256B6 FFB98DAB\n  27E6F571 42E04B99 EB7062CF 9D6BBE3E 2D2C9692\
+      \ 46515223 E5240F35 06DDF730\n  B498D0B2 61C24CD1 F38DA150 93417465 5C7CB45F\n\
+      \  \tquit\ncrypto pki certificate chain SLA-TrustPoint\n certificate ca 01\n\
+      \  30820321 30820209 A0030201 02020101 300D0609 2A864886 F70D0101 0B050030\n\
+      \  32310E30 0C060355 040A1305 43697363 6F312030 1E060355 04031317 43697363\n\
+      \  6F204C69 63656E73 696E6720 526F6F74 20434130 1E170D31 33303533 30313934\n\
+      \  3834375A 170D3338 30353330 31393438 34375A30 32310E30 0C060355 040A1305\n\
+      \  43697363 6F312030 1E060355 04031317 43697363 6F204C69 63656E73 696E6720\n\
+      \  526F6F74 20434130 82012230 0D06092A 864886F7 0D010101 05000382 010F0030\n\
+      \  82010A02 82010100 A6BCBD96 131E05F7 145EA72C 2CD686E6 17222EA1 F1EFF64D\n\
+      \  CBB4C798 212AA147 C655D8D7 9471380D 8711441E 1AAF071A 9CAE6388 8A38E520\n\
+      \  1C394D78 462EF239 C659F715 B98C0A59 5BBB5CBD 0CFEBEA3 700A8BF7 D8F256EE\n\
+      \  4AA4E80D DB6FD1C9 60B1FD18 FFC69C96 6FA68957 A2617DE7 104FDC5F EA2956AC\n\
+      \  7390A3EB 2B5436AD C847A2C5 DAB553EB 69A9A535 58E9F3E3 C0BD23CF 58BD7188\n\
+      \  68E69491 20F320E7 948E71D7 AE3BCC84 F10684C7 4BC8E00F 539BA42B 42C68BB7\n\
+      \  C7479096 B4CB2D62 EA2F505D C7B062A4 6811D95B E8250FC4 5D5D5FB8 8F27D191\n\
+      \  C55F0D76 61F9A4CD 3D992327 A8BB03BD 4E6D7069 7CBADF8B DF5F4368 95135E44\n\
+      \  DFC7C6CF 04DD7FD1 02030100 01A34230 40300E06 03551D0F 0101FF04 04030201\n\
+      \  06300F06 03551D13 0101FF04 05300301 01FF301D 0603551D 0E041604 1449DC85\n\
+      \  4B3D31E5 1B3E6A17 606AF333 3D3B4C73 E8300D06 092A8648 86F70D01 010B0500\n\
+      \  03820101 00507F24 D3932A66 86025D9F E838AE5C 6D4DF6B0 49631C78 240DA905\n\
+      \  604EDCDE FF4FED2B 77FC460E CD636FDB DD44681E 3A5673AB 9093D3B1 6C9E3D8B\n\
+      \  D98987BF E40CBD9E 1AECA0C2 2189BB5C 8FA85686 CD98B646 5575B146 8DFC66A8\n\
+      \  467A3DF4 4D565700 6ADF0F0D CF835015 3C04FF7C 21E878AC 11BA9CD2 55A9232C\n\
+      \  7CA7B7E6 C1AF74F6 152E99B7 B1FCF9BB E973DE7F 5BDDEB86 C71E3B49 1765308B\n\
+      \  5FB0DA06 B92AFE7F 494E8A9E 07B85737 F3A58BE1 1A48A229 C37C1E69 39F08678\n\
+      \  80DDCD16 D6BACECA EEBC7CF9 8428787B 35202CDC 60E4616A B623CDBD 230E3AFB\n\
+      \  418616A9 4093E049 4D10AB75 27E86F73 932E35B5 8862FDAE 0275156F 719BB2F0\n\
+      \  D697DF7F 28\n  \tquit\n!\nlicense udi pid CSR1000V sn 936TQIQ9T3C\ndiagnostic\
+      \ bootup level minimal\n!\nspanning-tree mode rapid-pvst\nspanning-tree extend\
+      \ system-id\nmemory free low-watermark processor 80526\n!\n!\n!\nusername cisco\
+      \ privilege 15 secret 5 $1$9lbU$9jMrJNR2UJ80ChKBcnIm21\n!\nredundancy\n!\n!\n\
+      !\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\ninterface Loopback0\n\
+      \ vrf forwarding mgmt\n ip address 172.16.0.19 255.255.255.255\n!\ninterface\
+      \ GigabitEthernet1\n no ip address\n negotiation auto\n no mop enabled\n no\
+      \ mop sysid\n service instance 999 ethernet\n  encapsulation dot1q 999\n !\n\
+      !\ninterface GigabitEthernet1.119\n encapsulation dot1Q 119\n vrf forwarding\
+      \ mgmt\n ip address 172.16.1.26 255.255.255.252\n!\ninterface GigabitEthernet2\n\
+      \ no ip address\n shutdown\n negotiation auto\n no mop enabled\n no mop sysid\n\
+      !\ninterface GigabitEthernet3\n no ip address\n shutdown\n negotiation auto\n\
+      \ no mop enabled\n no mop sysid\n!\ninterface GigabitEthernet4\n no ip address\n\
+      \ shutdown\n negotiation auto\n no mop enabled\n no mop sysid\n!\nrouter ospf\
+      \ 10 vrf mgmt\n router-id 172.16.1.19\n passive-interface default\n no passive-interface\
+      \ GigabitEthernet1.119\n network 172.16.0.0 0.0.255.255 area 0\n!\nip forward-protocol\
+      \ nd\nip http server\nip http authentication local\nip http secure-server\n\
+      !\n!\n!\n!\n!\n!\n!\n!\n!\n!\ncontrol-plane\n!\n!\n!\n!\n!\n!\nline con 0\n\
+      \ exec-timeout 0 0\n logging synchronous\n stopbits 1\nline vty 0 4\n logging\
+      \ synchronous\n transport input all\nline vty 5 15\n logging synchronous\n transport\
+      \ input all\n!\n!\n!\n!\n!\n!\nend"
     image_definition: csr1000v-161101b
     tags: []
     interfaces:
@@ -1802,99 +1821,100 @@ nodes:
     node_definition: csr1000v
     x: -600
     y: 100
-    configuration: "Building configuration...\n\nCurrent configuration : 6834 bytes\n\
-      !\n! Last configuration change at 11:55:18 UTC Sat Apr 24 2021\n!\nversion 16.11\n\
+    configuration: "Building configuration...\n\nCurrent configuration : 6881 bytes\n\
+      !\n! Last configuration change at 19:14:33 UTC Sat Apr 24 2021\n!\nversion 16.11\n\
       service timestamps debug datetime msec\nservice timestamps log datetime msec\n\
       ! Call-home is enabled by Smart-Licensing.\nservice call-home\nplatform qfp\
       \ utilization monitor load 80\nno platform punt-keepalive disable-kernel-core\n\
       platform console serial\n!\nhostname s2-rtr01\n!\nboot-start-marker\nboot-end-marker\n\
-      !\n!\nno logging console\n!\naaa new-model\n!\n!\naaa authentication login default\
+      !\n!\nvrf definition mgmt\n rd 65535:10\n !\n address-family ipv4\n exit-address-family\n\
+      !\nno logging console\n!\naaa new-model\n!\n!\naaa authentication login default\
       \ local\naaa authorization exec default local\n!\n!\n!\n!\n!\naaa session-id\
       \ common\ncall-home\n ! If contact email address in call-home is configured\
       \ as sch-smart-licensing@cisco.com\n ! the email address configured in Cisco\
       \ Smart License Portal will be used as contact email address to send SCH notifications.\n\
       \ contact-email-addr sch-smart-licensing@cisco.com\n profile \"CiscoTAC-1\"\n\
       \  active\n  destination transport-method http\n  no destination transport-method\
-      \ email\n!\nip vrf mgmt\n rd 65535:10\n!\n!\n!\n!\n!\n!\n!\nip domain name aeon.local\n\
-      !\n!\n!\nlogin on-success log\n!\n!\n!\n!\n!\n!\n!\nsubscriber templating\n\
-      !\n!\n!\n!\n!\n!\nmultilink bundle-name authenticated\n!\n!\n!\n!\n!\n!\n!\n\
-      !\n!\n!\n!\n!\n!\ncrypto pki trustpoint TP-self-signed-2896630083\n enrollment\
-      \ selfsigned\n subject-name cn=IOS-Self-Signed-Certificate-2896630083\n revocation-check\
-      \ none\n rsakeypair TP-self-signed-2896630083\n!\ncrypto pki trustpoint SLA-TrustPoint\n\
-      \ enrollment pkcs12\n revocation-check crl\n!\n!\ncrypto pki certificate chain\
-      \ TP-self-signed-2896630083\n certificate self-signed 01\n  30820330 30820218\
-      \ A0030201 02020101 300D0609 2A864886 F70D0101 05050030\n  31312F30 2D060355\
-      \ 04031326 494F532D 53656C66 2D536967 6E65642D 43657274\n  69666963 6174652D\
-      \ 32383936 36333030 3833301E 170D3231 30343234 31313137\n  35335A17 0D333030\
-      \ 31303130 30303030 305A3031 312F302D 06035504 03132649\n  4F532D53 656C662D\
-      \ 5369676E 65642D43 65727469 66696361 74652D32 38393636\n  33303038 33308201\
-      \ 22300D06 092A8648 86F70D01 01010500 0382010F 00308201\n  0A028201 0100AA03\
-      \ 868CACDF 59BEC580 14DC1E58 3AAC9896 C6536FDC BCE20E07\n  7FDEB603 A52ED599\
-      \ FCB2032C 03C84F9B A972098C B91B0C78 38E6D45A 83DDCA13\n  0E034890 36D46783\
-      \ BC86A2D1 4D9086BF F321B28F 77494EA6 E2D85F63 A4BA350E\n  5A0DE625 0AD6CEDC\
-      \ E9EEF644 0A72474B B62EE03A 06D4A96C EF5C9E09 9A0990CE\n  81C49EBF 22F8C6A6\
-      \ B3023D83 9264556B 52A2406F BD7F9DDF 72847A4A B16A58F9\n  95A20B4F 3BB566E6\
-      \ 04BA1EAE E1DDBEEC 85CF434D 5104B268 9B184275 270A28DF\n  AD16F277 6A36603C\
-      \ A5205F16 439EBF4F 3A4B1D43 D72DDAD8 0B623328 B8FCC542\n  07127660 6A251633\
-      \ 13D963DF A57B1385 683DA8E4 29FF24E2 63E871F2 3FEE4D31\n  C773F021 18BF0203\
-      \ 010001A3 53305130 0F060355 1D130101 FF040530 030101FF\n  301F0603 551D2304\
-      \ 18301680 14F57E0D E1776045 745C7DA4 1B751880 25B9840B\n  AD301D06 03551D0E\
-      \ 04160414 F57E0DE1 77604574 5C7DA41B 75188025 B9840BAD\n  300D0609 2A864886\
-      \ F70D0101 05050003 82010100 2EF73E13 7926CE8F E25F7F1D\n  BA15B902 85A8FE11\
-      \ B2B27F25 31BD0CE7 5EC9E8CA DC6B82DC 9A647853 E7881E2B\n  7A3AD858 69E62D82\
-      \ A7C9A83E 867B8610 34AD5C41 64BB9624 5FBE9BC9 EC01CFF7\n  4DB1A930 829760F2\
-      \ 8767E1EC AEF99C2A 7C24EDD8 D9CB8D3D 3481EDFE 99E00D2B\n  512D005B 3426495F\
-      \ 7B02FF77 C2225FBF CBFDA185 66B3B03F 7C179744 F1B66F0D\n  01FF423D C8E0E3C8\
-      \ 018CB932 9603CDA5 ADE01DCE 62B6876E B3DCA4D4 D5CF1DFC\n  D8236F2E 378C8426\
-      \ FE1EB14F F8244CAB D2D3A577 C3307DEF 1057D76C 68F9E295\n  30CE29C8 E073B6EB\
-      \ A4FD56D5 A947D6A9 6E55BEFB 34FE09E3 3F2E5424 61ECA283\n  ADC01BB1 F38308A3\
-      \ DFB66140 76AD9453 1B0A41FD\n  \tquit\ncrypto pki certificate chain SLA-TrustPoint\n\
-      \ certificate ca 01\n  30820321 30820209 A0030201 02020101 300D0609 2A864886\
-      \ F70D0101 0B050030\n  32310E30 0C060355 040A1305 43697363 6F312030 1E060355\
-      \ 04031317 43697363\n  6F204C69 63656E73 696E6720 526F6F74 20434130 1E170D31\
-      \ 33303533 30313934\n  3834375A 170D3338 30353330 31393438 34375A30 32310E30\
-      \ 0C060355 040A1305\n  43697363 6F312030 1E060355 04031317 43697363 6F204C69\
-      \ 63656E73 696E6720\n  526F6F74 20434130 82012230 0D06092A 864886F7 0D010101\
-      \ 05000382 010F0030\n  82010A02 82010100 A6BCBD96 131E05F7 145EA72C 2CD686E6\
-      \ 17222EA1 F1EFF64D\n  CBB4C798 212AA147 C655D8D7 9471380D 8711441E 1AAF071A\
-      \ 9CAE6388 8A38E520\n  1C394D78 462EF239 C659F715 B98C0A59 5BBB5CBD 0CFEBEA3\
-      \ 700A8BF7 D8F256EE\n  4AA4E80D DB6FD1C9 60B1FD18 FFC69C96 6FA68957 A2617DE7\
-      \ 104FDC5F EA2956AC\n  7390A3EB 2B5436AD C847A2C5 DAB553EB 69A9A535 58E9F3E3\
-      \ C0BD23CF 58BD7188\n  68E69491 20F320E7 948E71D7 AE3BCC84 F10684C7 4BC8E00F\
-      \ 539BA42B 42C68BB7\n  C7479096 B4CB2D62 EA2F505D C7B062A4 6811D95B E8250FC4\
-      \ 5D5D5FB8 8F27D191\n  C55F0D76 61F9A4CD 3D992327 A8BB03BD 4E6D7069 7CBADF8B\
-      \ DF5F4368 95135E44\n  DFC7C6CF 04DD7FD1 02030100 01A34230 40300E06 03551D0F\
-      \ 0101FF04 04030201\n  06300F06 03551D13 0101FF04 05300301 01FF301D 0603551D\
-      \ 0E041604 1449DC85\n  4B3D31E5 1B3E6A17 606AF333 3D3B4C73 E8300D06 092A8648\
-      \ 86F70D01 010B0500\n  03820101 00507F24 D3932A66 86025D9F E838AE5C 6D4DF6B0\
-      \ 49631C78 240DA905\n  604EDCDE FF4FED2B 77FC460E CD636FDB DD44681E 3A5673AB\
-      \ 9093D3B1 6C9E3D8B\n  D98987BF E40CBD9E 1AECA0C2 2189BB5C 8FA85686 CD98B646\
-      \ 5575B146 8DFC66A8\n  467A3DF4 4D565700 6ADF0F0D CF835015 3C04FF7C 21E878AC\
-      \ 11BA9CD2 55A9232C\n  7CA7B7E6 C1AF74F6 152E99B7 B1FCF9BB E973DE7F 5BDDEB86\
-      \ C71E3B49 1765308B\n  5FB0DA06 B92AFE7F 494E8A9E 07B85737 F3A58BE1 1A48A229\
-      \ C37C1E69 39F08678\n  80DDCD16 D6BACECA EEBC7CF9 8428787B 35202CDC 60E4616A\
-      \ B623CDBD 230E3AFB\n  418616A9 4093E049 4D10AB75 27E86F73 932E35B5 8862FDAE\
-      \ 0275156F 719BB2F0\n  D697DF7F 28\n  \tquit\n!\nlicense udi pid CSR1000V sn\
-      \ 9SMJ86QCOX0\ndiagnostic bootup level minimal\n!\nspanning-tree mode rapid-pvst\n\
-      spanning-tree extend system-id\nmemory free low-watermark processor 80526\n\
-      !\n!\n!\nusername cisco privilege 15 secret 5 $1$9lbU$9jMrJNR2UJ80ChKBcnIm21\n\
-      !\nredundancy\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n\
-      !\n!\n!\ninterface Loopback0\n ip vrf forwarding mgmt\n ip address 172.16.0.29\
-      \ 255.255.255.255\n!\ninterface GigabitEthernet1\n no ip address\n negotiation\
-      \ auto\n no mop enabled\n no mop sysid\n service instance 999 ethernet\n  encapsulation\
-      \ dot1q 999\n !\n!\ninterface GigabitEthernet1.129\n encapsulation dot1Q 129\n\
-      \ ip vrf forwarding mgmt\n ip address 172.16.1.34 255.255.255.252\n!\ninterface\
-      \ GigabitEthernet2\n no ip address\n shutdown\n negotiation auto\n no mop enabled\n\
-      \ no mop sysid\n!\ninterface GigabitEthernet3\n no ip address\n shutdown\n negotiation\
-      \ auto\n no mop enabled\n no mop sysid\n!\ninterface GigabitEthernet4\n no ip\
-      \ address\n shutdown\n negotiation auto\n no mop enabled\n no mop sysid\n!\n\
-      router ospf 10 vrf mgmt\n router-id 172.16.1.29\n passive-interface default\n\
-      \ no passive-interface GigabitEthernet1.129\n network 172.16.0.0 0.0.255.255\
-      \ area 0\n!\nip forward-protocol nd\nip http server\nip http authentication\
-      \ local\nip http secure-server\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\ncontrol-plane\n\
-      !\n!\n!\n!\n!\n!\nline con 0\n exec-timeout 0 0\n logging synchronous\n stopbits\
-      \ 1\nline vty 0 4\n logging synchronous\n transport input all\nline vty 5 15\n\
-      \ logging synchronous\n transport input all\n!\n!\n!\n!\n!\n!\nend"
+      \ email\n!\n!\n!\n!\n!\n!\n!\nip domain name aeon.local\n!\n!\n!\nlogin on-success\
+      \ log\n!\n!\n!\n!\n!\n!\n!\nsubscriber templating\n!\n!\n!\n!\n!\n!\nmultilink\
+      \ bundle-name authenticated\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\ncrypto pki\
+      \ trustpoint TP-self-signed-2896630083\n enrollment selfsigned\n subject-name\
+      \ cn=IOS-Self-Signed-Certificate-2896630083\n revocation-check none\n rsakeypair\
+      \ TP-self-signed-2896630083\n!\ncrypto pki trustpoint SLA-TrustPoint\n enrollment\
+      \ pkcs12\n revocation-check crl\n!\n!\ncrypto pki certificate chain TP-self-signed-2896630083\n\
+      \ certificate self-signed 01\n  30820330 30820218 A0030201 02020101 300D0609\
+      \ 2A864886 F70D0101 05050030\n  31312F30 2D060355 04031326 494F532D 53656C66\
+      \ 2D536967 6E65642D 43657274\n  69666963 6174652D 32383936 36333030 3833301E\
+      \ 170D3231 30343234 31313137\n  35335A17 0D333030 31303130 30303030 305A3031\
+      \ 312F302D 06035504 03132649\n  4F532D53 656C662D 5369676E 65642D43 65727469\
+      \ 66696361 74652D32 38393636\n  33303038 33308201 22300D06 092A8648 86F70D01\
+      \ 01010500 0382010F 00308201\n  0A028201 0100AA03 868CACDF 59BEC580 14DC1E58\
+      \ 3AAC9896 C6536FDC BCE20E07\n  7FDEB603 A52ED599 FCB2032C 03C84F9B A972098C\
+      \ B91B0C78 38E6D45A 83DDCA13\n  0E034890 36D46783 BC86A2D1 4D9086BF F321B28F\
+      \ 77494EA6 E2D85F63 A4BA350E\n  5A0DE625 0AD6CEDC E9EEF644 0A72474B B62EE03A\
+      \ 06D4A96C EF5C9E09 9A0990CE\n  81C49EBF 22F8C6A6 B3023D83 9264556B 52A2406F\
+      \ BD7F9DDF 72847A4A B16A58F9\n  95A20B4F 3BB566E6 04BA1EAE E1DDBEEC 85CF434D\
+      \ 5104B268 9B184275 270A28DF\n  AD16F277 6A36603C A5205F16 439EBF4F 3A4B1D43\
+      \ D72DDAD8 0B623328 B8FCC542\n  07127660 6A251633 13D963DF A57B1385 683DA8E4\
+      \ 29FF24E2 63E871F2 3FEE4D31\n  C773F021 18BF0203 010001A3 53305130 0F060355\
+      \ 1D130101 FF040530 030101FF\n  301F0603 551D2304 18301680 14F57E0D E1776045\
+      \ 745C7DA4 1B751880 25B9840B\n  AD301D06 03551D0E 04160414 F57E0DE1 77604574\
+      \ 5C7DA41B 75188025 B9840BAD\n  300D0609 2A864886 F70D0101 05050003 82010100\
+      \ 2EF73E13 7926CE8F E25F7F1D\n  BA15B902 85A8FE11 B2B27F25 31BD0CE7 5EC9E8CA\
+      \ DC6B82DC 9A647853 E7881E2B\n  7A3AD858 69E62D82 A7C9A83E 867B8610 34AD5C41\
+      \ 64BB9624 5FBE9BC9 EC01CFF7\n  4DB1A930 829760F2 8767E1EC AEF99C2A 7C24EDD8\
+      \ D9CB8D3D 3481EDFE 99E00D2B\n  512D005B 3426495F 7B02FF77 C2225FBF CBFDA185\
+      \ 66B3B03F 7C179744 F1B66F0D\n  01FF423D C8E0E3C8 018CB932 9603CDA5 ADE01DCE\
+      \ 62B6876E B3DCA4D4 D5CF1DFC\n  D8236F2E 378C8426 FE1EB14F F8244CAB D2D3A577\
+      \ C3307DEF 1057D76C 68F9E295\n  30CE29C8 E073B6EB A4FD56D5 A947D6A9 6E55BEFB\
+      \ 34FE09E3 3F2E5424 61ECA283\n  ADC01BB1 F38308A3 DFB66140 76AD9453 1B0A41FD\n\
+      \  \tquit\ncrypto pki certificate chain SLA-TrustPoint\n certificate ca 01\n\
+      \  30820321 30820209 A0030201 02020101 300D0609 2A864886 F70D0101 0B050030\n\
+      \  32310E30 0C060355 040A1305 43697363 6F312030 1E060355 04031317 43697363\n\
+      \  6F204C69 63656E73 696E6720 526F6F74 20434130 1E170D31 33303533 30313934\n\
+      \  3834375A 170D3338 30353330 31393438 34375A30 32310E30 0C060355 040A1305\n\
+      \  43697363 6F312030 1E060355 04031317 43697363 6F204C69 63656E73 696E6720\n\
+      \  526F6F74 20434130 82012230 0D06092A 864886F7 0D010101 05000382 010F0030\n\
+      \  82010A02 82010100 A6BCBD96 131E05F7 145EA72C 2CD686E6 17222EA1 F1EFF64D\n\
+      \  CBB4C798 212AA147 C655D8D7 9471380D 8711441E 1AAF071A 9CAE6388 8A38E520\n\
+      \  1C394D78 462EF239 C659F715 B98C0A59 5BBB5CBD 0CFEBEA3 700A8BF7 D8F256EE\n\
+      \  4AA4E80D DB6FD1C9 60B1FD18 FFC69C96 6FA68957 A2617DE7 104FDC5F EA2956AC\n\
+      \  7390A3EB 2B5436AD C847A2C5 DAB553EB 69A9A535 58E9F3E3 C0BD23CF 58BD7188\n\
+      \  68E69491 20F320E7 948E71D7 AE3BCC84 F10684C7 4BC8E00F 539BA42B 42C68BB7\n\
+      \  C7479096 B4CB2D62 EA2F505D C7B062A4 6811D95B E8250FC4 5D5D5FB8 8F27D191\n\
+      \  C55F0D76 61F9A4CD 3D992327 A8BB03BD 4E6D7069 7CBADF8B DF5F4368 95135E44\n\
+      \  DFC7C6CF 04DD7FD1 02030100 01A34230 40300E06 03551D0F 0101FF04 04030201\n\
+      \  06300F06 03551D13 0101FF04 05300301 01FF301D 0603551D 0E041604 1449DC85\n\
+      \  4B3D31E5 1B3E6A17 606AF333 3D3B4C73 E8300D06 092A8648 86F70D01 010B0500\n\
+      \  03820101 00507F24 D3932A66 86025D9F E838AE5C 6D4DF6B0 49631C78 240DA905\n\
+      \  604EDCDE FF4FED2B 77FC460E CD636FDB DD44681E 3A5673AB 9093D3B1 6C9E3D8B\n\
+      \  D98987BF E40CBD9E 1AECA0C2 2189BB5C 8FA85686 CD98B646 5575B146 8DFC66A8\n\
+      \  467A3DF4 4D565700 6ADF0F0D CF835015 3C04FF7C 21E878AC 11BA9CD2 55A9232C\n\
+      \  7CA7B7E6 C1AF74F6 152E99B7 B1FCF9BB E973DE7F 5BDDEB86 C71E3B49 1765308B\n\
+      \  5FB0DA06 B92AFE7F 494E8A9E 07B85737 F3A58BE1 1A48A229 C37C1E69 39F08678\n\
+      \  80DDCD16 D6BACECA EEBC7CF9 8428787B 35202CDC 60E4616A B623CDBD 230E3AFB\n\
+      \  418616A9 4093E049 4D10AB75 27E86F73 932E35B5 8862FDAE 0275156F 719BB2F0\n\
+      \  D697DF7F 28\n  \tquit\n!\nlicense udi pid CSR1000V sn 9SMJ86QCOX0\ndiagnostic\
+      \ bootup level minimal\n!\nspanning-tree mode rapid-pvst\nspanning-tree extend\
+      \ system-id\nmemory free low-watermark processor 80526\n!\n!\n!\nusername cisco\
+      \ privilege 15 secret 5 $1$9lbU$9jMrJNR2UJ80ChKBcnIm21\n!\nredundancy\n!\n!\n\
+      !\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\ninterface Loopback0\n\
+      \ vrf forwarding mgmt\n ip address 172.16.0.29 255.255.255.255\n!\ninterface\
+      \ GigabitEthernet1\n no ip address\n negotiation auto\n no mop enabled\n no\
+      \ mop sysid\n service instance 999 ethernet\n  encapsulation dot1q 999\n !\n\
+      !\ninterface GigabitEthernet1.129\n encapsulation dot1Q 129\n vrf forwarding\
+      \ mgmt\n ip address 172.16.1.34 255.255.255.252\n!\ninterface GigabitEthernet2\n\
+      \ no ip address\n shutdown\n negotiation auto\n no mop enabled\n no mop sysid\n\
+      !\ninterface GigabitEthernet3\n no ip address\n shutdown\n negotiation auto\n\
+      \ no mop enabled\n no mop sysid\n!\ninterface GigabitEthernet4\n no ip address\n\
+      \ shutdown\n negotiation auto\n no mop enabled\n no mop sysid\n!\nrouter ospf\
+      \ 10 vrf mgmt\n router-id 172.16.1.29\n passive-interface default\n no passive-interface\
+      \ GigabitEthernet1.129\n network 172.16.0.0 0.0.255.255 area 0\n!\nip forward-protocol\
+      \ nd\nip http server\nip http authentication local\nip http secure-server\n\
+      !\n!\n!\n!\n!\n!\n!\n!\n!\n!\ncontrol-plane\n!\n!\n!\n!\n!\n!\nline con 0\n\
+      \ exec-timeout 0 0\n logging synchronous\n stopbits 1\nline vty 0 4\n logging\
+      \ synchronous\n transport input all\nline vty 5 15\n logging synchronous\n transport\
+      \ input all\n!\n!\n!\n!\n!\n!\nend"
     image_definition: csr1000v-161101b
     tags: []
     interfaces:
