@@ -1,0 +1,16 @@
+---
+- name: Check loopback interfaces/validates connectivity
+  connection: network_cli
+  hosts: all
+  tasks:
+    - name: show run int lo0
+      ios_command:
+        commands: show run int lo0
+      register: output
+
+    - name: show output
+      debug:
+        var: output.stdout
+
+...
+

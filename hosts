@@ -1,0 +1,73 @@
+---
+all:
+  children:
+    site_01:
+      children:
+        s1_core:
+          hosts:
+            s1-core01:
+        s1_dist:
+          hosts:
+            s1-dist01:
+        s1_rtr:
+          hosts:
+            s1-tr01:
+        s1_dc:
+          hosts:
+            s1-dc01:
+    site_02:
+      children:
+        s2_core:
+          hosts:
+            s2-core01:
+        s2_dist:
+          hosts:
+            s2-dist01:
+        s2_rtr:
+          hosts:
+            s2-tr01:
+        s2_dc:
+          hosts:
+            s2-dc01:
+    site_03:
+      children:
+        s3_core:
+          hosts:
+            s3-core01:
+        s3_dist:
+          hosts:
+            s3-dist01:
+    site_04:
+      children:
+        s4_core:
+          hosts:
+            s4-core01:
+        s4_dist:
+          hosts:
+            s4-dist01:
+
+#Nested groups
+    cores:
+      children:
+        s1_core:
+        s2_core:
+        s3_core:
+        s4_core:
+    routers:
+      children:
+        s1_rtr:
+        s2_rtr:
+    dc_switches:
+      children:
+        s1_dc:
+        s2_dc:
+    dist:
+      children:
+        s1_dist:
+        s2_dist:
+        s3_dist:
+        s4_dist:
+
+
+...
+

@@ -1,0 +1,2 @@
+#Remove group_vars/all - where creds are stored
+group_vars/all
