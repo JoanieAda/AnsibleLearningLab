@@ -8,7 +8,7 @@ all:
             s1-core01:
         s1_dist:
           hosts:
-            s1-dist01:
+            #s1-dist01:
         s1_rtr:
           hosts:
             s1-tr01:
@@ -22,7 +22,7 @@ all:
             s2-core01:
         s2_dist:
           hosts:
-            s2-dist01:
+            #s2-dist01:
         s2_rtr:
           hosts:
             s2-tr01:

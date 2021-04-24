@@ -1,0 +1,6 @@
+---
+ansible_host: 172.16.0.19
+ansible_network_os: ios
+
+...
+
