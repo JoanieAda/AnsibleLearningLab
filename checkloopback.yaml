@@ -10,7 +10,7 @@
 
     - name: show output
       debug:
-        var: output.stdout
+        var: output.stdout_lines
 
 ...
 

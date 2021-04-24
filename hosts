@@ -11,7 +11,7 @@ all:
             #s1-dist01:
         s1_rtr:
           hosts:
-            s1-tr01:
+            s1-rtr01:
         s1_dc:
           hosts:
             s1-dc01:
@@ -25,7 +25,7 @@ all:
             #s2-dist01:
         s2_rtr:
           hosts:
-            s2-tr01:
+            s2-rtr01:
         s2_dc:
           hosts:
             s2-dc01:

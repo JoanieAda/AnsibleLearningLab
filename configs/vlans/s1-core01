@@ -1,0 +1,38 @@
+---
+vlans:
+  - vid: 112
+    name: s1-s2-mgmt
+    interface:
+      description: "s1-s2 core mgmt vrf"
+      vrf: mgmt
+      ip:
+        address: 172.16.1.1/30 
+  
+  - vid: 113
+    name: s1-s3-mgmt
+    interface:
+      description: "s1-s3 core mgmt vrf"
+      vrf: mgmt
+      ip: 
+        address: 172.16.1.5/30
+  
+  - vid: 115
+    name: s1-dc-mgmt
+    interface:
+      description: "s1-dc mgmt vrf"
+      vrf: mgmt
+      ip: 
+       address: 172.16.1.29/30 
+  
+  - vid: 119
+    name: s1-rtr-mgmt
+    interface:
+      description: "s1-rtr mgmt vrf"
+      vrf: mgmt
+      ip: 
+        address: 172.16.1.25/30 
+  
+  - vid: 999
+    name: Native
+
+...

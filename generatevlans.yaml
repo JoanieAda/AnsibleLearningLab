@@ -1,0 +1,15 @@
+---
+- name: Generate Vlans config
+  connection: network_cli
+  hosts: all
+  include_vars:
+    dir: configs/vlans
+    file: {{ inventory_hostname }}.yaml
+
+  tasks:
+    - name: Generate Vlan config
+      template:
+        src: "templates/vlans.j2"
+        dest: "{{ inventory_hostname }}.config"
+
+...
