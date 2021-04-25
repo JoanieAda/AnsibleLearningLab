@@ -130,14 +130,16 @@ def parse_server(line, dest):
             if match:
                 server = match.group(3)
                 return server
-    elif dest == "vrf":
+
+
+def parse_vrf(line, dest):
+    if dest == "server":
         match = re.search(
             "(ntp server vrf )(\\S+) (\\d+\\.\\d+\\.\\d+\\.\\d+)", line, re.M
         )
         if match:
             vrf = match.group(2)
             return vrf
-
 
 
 def parse_source_int(line, dest):
@@ -197,7 +199,7 @@ def map_config_to_obj(module):
         if match:
             dest = match.group(1)
             server = parse_server(line, dest)
-            vrf = parse_server(line, dest)
+            vrf = parse_vrf(line, dest)
             source_int = parse_source_int(line, dest)
             acl = parse_acl(line, dest)
             logging = parse_logging(line, dest)
@@ -206,9 +208,9 @@ def map_config_to_obj(module):
             key_id = parse_key_id(line, dest)
             if server:
                 if vrf:
-                    server_list.append([server,vrf])
+                    server_list.append((server,vrf))
                 else:
-                    server_list.append([server,""])
+                    server_list.append((server,""))
             if source_int:
                 obj_dict["source_int"] = source_int
             if acl:
@@ -246,8 +248,7 @@ def map_params_to_obj(module):
 
 def map_obj_to_commands(want, have, module):
     commands = list()
-    server_have = have[0][0].get("server", None)
-    vrf_have = have[0][1].get("server", None)
+    server_have = have[0].get("server", None)
     source_int_have = have[0].get("source_int", None)
     acl_have = have[0].get("acl", None)
     logging_have = have[0].get("logging", None)
@@ -265,8 +266,11 @@ def map_obj_to_commands(want, have, module):
         auth_key = w["auth_key"]
         key_id = w["key_id"]
         if state == "absent":
-            if server_have and server in server_have:
-                commands.append("no ntp server {0}".format(server))
+            if server_have and (server,vrf) in server_have:
+                if vrf != "":
+                    commands.append("no ntp server vrf {0} {1}".format(vrf,server))
+                else:
+                    commands.append("no ntp server {0}".format(server))
             if source_int and source_int_have:
                 commands.append("no ntp source {0}".format(source_int))
             if acl and acl_have:
@@ -285,8 +289,11 @@ def map_obj_to_commands(want, have, module):
                         )
                     )
         elif state == "present":
-            if server is not None and server not in server_have:
-                commands.append("ntp server {0}".format(server))
+            if server is not None and (server,vrf) not in server_have:
+                if vrf != "":
+                    commands.append("ntp server vrf {0} {1}".format(vrf,server))
+                else:
+                    commands.append("ntp server {0}".format(server))
             if source_int is not None and source_int != source_int_have:
                 commands.append("ntp source {0}".format(source_int))
             if acl is not None and acl != acl_have:
@@ -314,7 +321,7 @@ def map_obj_to_commands(want, have, module):
 def main():
     argument_spec = dict(
         server=dict(),
-        vrf=dict(),
+        vrf=dict(default=""),
         source_int=dict(),
         acl=dict(),
         logging=dict(type="bool", default=False),

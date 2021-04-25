@@ -3,6 +3,8 @@ ntps:
   - server: 172.16.0.11
     vrf: mgmt
   - server: 172.16.0.21
-    #vrf: mgmt
+    vrf: ""
+  - server: 172.16.0.11
+    vrf: ""
 
 ... 
