@@ -8,16 +8,15 @@
       stat:
         path: "configs/vrfs/{{ inventory_hostname }}.yaml"
       register: vrfs_yaml
-
     - include_vars:
         file: "configs/vrfs/{{ inventory_hostname }}.yaml"
       when: vrfs_yaml.stat.exists == True
 
-    - name: Generate Vrf config
-      template:
-        src: "templates/vrfs.j2"
-        dest: "config_files/{{ inventory_hostname }}.config"
-      when: vrfs is defined
+#    - name: Generate Vrf config
+#      template:
+#        src: "templates/vrfs.j2"
+#        dest: "config_files/{{ inventory_hostname }}.config"
+#      when: vrfs is defined
 
     - name: Push VRF config
       cisco.ios.ios_vrf:
@@ -26,12 +25,5 @@
       with_items: "{{ vrfs }}"
       when: vrfs is defined
 
-#    - name: Push Vlan config
-#      ios_config:
-#        src: "templates/vlans.j2"
-#      when: vrfs is defined
-#      register: vrf_config_results
-#
-#    - set_fact: vrf_config_changes={{ vrf_config_results | to_nice_yaml }}
 
 ...

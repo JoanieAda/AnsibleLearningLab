@@ -1,28 +1,4 @@
 ---
-- name: Generate NTP config for all devices
-  connection: network_cli
-  hosts: dist,routers
- 
-  tasks:
-    - include_vars:
-        file: configs/ntp/global.yaml
-
-#    - name: Generate Vrf config
-#      template:
-#        src: "templates/vrfs.j2"
-#        dest: "config_files/{{ inventory_hostname }}.config"
-#      when: vrfs is defined
-
-    - name: Push VRF config
-      ios_ntp:
-        server: "{{ item.server }}"
-        vrf: "{{ item.vrf }}"
-        source_int: Loopback0
-      with_items: "{{ ntps }}"
-      when: ntps is defined
-
-
-
 - name: Generate NTP config for Core
   connection: network_cli
   hosts: cores
@@ -30,14 +6,7 @@
   tasks:
     - include_vars:
         file: configs/ntp/core.yaml
-
-#    - name: Generate Vrf config
-#      template:
-#        src: "templates/vrfs.j2"
-#        dest: "config_files/{{ inventory_hostname }}.config"
-#      when: vrfs is defined
-
-    - name: Push VRF config
+    - name: Push VRF config to core switches
       ios_ntp:
         server: "{{ item.server }}"
         vrf: "{{ item.vrf }}"
@@ -45,3 +14,20 @@
       with_items: "{{ ntps }}"
       when: ntps is defined
 
+
+- name: Generate NTP config for all devices
+  connection: network_cli
+  hosts: dist,routers
+  
+  tasks:
+    - include_vars:
+        file: configs/ntp/global.yaml
+    - name: Push VRF config to remaining devices
+      ios_ntp:
+        server: "{{ item.server }}"
+        vrf: "{{ item.vrf }}"
+        source_int: Loopback0
+      with_items: "{{ ntps }}"
+      when: ntps is defined
+
+...
