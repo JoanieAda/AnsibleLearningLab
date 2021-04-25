@@ -22,7 +22,7 @@ vlans:
       description: "s2-dc mgmt vrf"
       vrf: mgmt
       ip: 
-        address: 172.16.1.33/30 
+        address: 172.16.1.37/30 
   
   - vid: 129
     name: s2-rtr-mgmt
@@ -30,7 +30,7 @@ vlans:
       description: "s2-rtr mgmt vrf"
       vrf: mgmt
       ip: 
-        address: 172.16.1.37/30 
+        address: 172.16.1.33/30 
   
   - vid: 999
     name: Native
