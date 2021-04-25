@@ -28,6 +28,8 @@ description:
 version_added: 1.0.0
 author:
 - Federico Olivieri (@Federico87)
+contributors:
+- Joanie Sylvain (@JoanieAda)
 options:
   server:
     description:
@@ -67,6 +69,12 @@ options:
     - present
     - absent
     type: str
+version_updated: 1.1.0
+options:
+  vrf:
+    description:
+    - VRF Name for VRF aware NTP configuration.
+    type: str
 """
 EXAMPLES = """
 # Set new NTP server and source interface
@@ -96,6 +104,11 @@ EXAMPLES = """
     auth_key: 15435A030726242723273C21181319000A
     auth: true
     state: present
+# Set new NTP server in specified vrf
+- cisco.ios.ios_ntp:
+    server: 10.0.255.10
+    vrf: mgmt
+    state: present 
 """
 RETURN = """
 commands:
