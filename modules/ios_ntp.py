@@ -119,10 +119,16 @@ def parse_server(line, dest):
     if dest == "server":
         match = re.search(
             "(ntp server )(\\d+\\.\\d+\\.\\d+\\.\\d+)", line, re.M
+            "(ntp server vrf )(\\S+ )(\\d+\\.\\d+\\.\\d+\\.\\d+)", line, re.M
         )
         if match:
-            server = match.group(2)
-            return server
+            if match.group(3):
+                vrf = match.group(2)
+                server = match.group(3)
+                return vrf, server
+            else:
+                server = match.group(2)
+                return server
 
 
 def parse_source_int(line, dest):
