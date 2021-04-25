@@ -122,16 +122,16 @@ def parse_server(line, dest):
         )
         if match:
             server = match.group(2)
-            return server
+            return server, ""
         else:
             match = re.search(
-                "(ntp server vrf )(\\S+ )(\\d+\\.\\d+\\.\\d+\\.\\d+)", line, re.M
+                "(ntp server vrf )(\\S+) (\\d+\\.\\d+\\.\\d+\\.\\d+)", line, re.M
             )                     
             if match:
                 vrf = match.group(2)
                 server = match.group(3)
-                return vrf, server 
-                
+                return server, vrf
+
 
 def parse_source_int(line, dest):
     if dest == "source":
@@ -189,7 +189,7 @@ def map_config_to_obj(module):
         match = re.search("ntp (\\S+)", line, re.M)
         if match:
             dest = match.group(1)
-            server = parse_server(line, dest)
+            server, vrf = parse_server(line, dest)
             source_int = parse_source_int(line, dest)
             acl = parse_acl(line, dest)
             logging = parse_logging(line, dest)

@@ -2,9 +2,7 @@
 ntps:
   - server: 172.16.0.11
     vrf: mgmt
-    src_int: Loopback0
   - server: 172.16.0.21
-    vrf: mgmt
-    src_int: Loopback0
+    #vrf: mgmt
 
 ... 

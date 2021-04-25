@@ -17,7 +17,7 @@
       ios_ntp:
         server: "{{ item.server }}"
         vrf: "{{ item.vrf }}"
-        source_int: "{{ item.src_int }}"
+        source_int: Loopback0
       with_items: "{{ ntps }}"
       when: ntps is defined
 
