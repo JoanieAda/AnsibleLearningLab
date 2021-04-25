@@ -1,0 +1,16 @@
+---
+vlans:
+  - vid: 142
+    name: s4-core-dist-mgmt
+    interface:
+      description: "s4 core to dist mgmt vrf"
+      vrf: mgmt
+      ip: 
+        address: 172.16.1.22/30 
+
+  - vid: 999
+    name: Native
+
+
+...
+
