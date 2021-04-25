@@ -122,15 +122,22 @@ def parse_server(line, dest):
         )
         if match:
             server = match.group(2)
-            return server, ""
+            return server
         else:
             match = re.search(
                 "(ntp server vrf )(\\S+) (\\d+\\.\\d+\\.\\d+\\.\\d+)", line, re.M
-            )                     
+            )
             if match:
-                vrf = match.group(2)
                 server = match.group(3)
-                return server, vrf
+                return server
+    elif dest == "vrf":
+        match = re.search(
+            "(ntp server vrf )(\\S+) (\\d+\\.\\d+\\.\\d+\\.\\d+)", line, re.M
+        )
+        if match:
+            vrf = match.group(2)
+            return vrf
+
 
 
 def parse_source_int(line, dest):
@@ -189,7 +196,8 @@ def map_config_to_obj(module):
         match = re.search("ntp (\\S+)", line, re.M)
         if match:
             dest = match.group(1)
-            server, vrf = parse_server(line, dest)
+            server = parse_server(line, dest)
+            vrf = parse_server(line, dest)
             source_int = parse_source_int(line, dest)
             acl = parse_acl(line, dest)
             logging = parse_logging(line, dest)
@@ -197,7 +205,10 @@ def map_config_to_obj(module):
             auth_key = parse_auth_key(line, dest)
             key_id = parse_key_id(line, dest)
             if server:
-                server_list.append(server)
+                if vrf:
+                    server_list.append([server,vrf])
+                else:
+                    server_list.append([server,""])
             if source_int:
                 obj_dict["source_int"] = source_int
             if acl:
@@ -221,6 +232,7 @@ def map_params_to_obj(module):
         {
             "state": module.params["state"],
             "server": module.params["server"],
+            "vrf": module.params["vrf"],
             "source_int": module.params["source_int"],
             "logging": module.params["logging"],
             "acl": module.params["acl"],
@@ -234,7 +246,8 @@ def map_params_to_obj(module):
 
 def map_obj_to_commands(want, have, module):
     commands = list()
-    server_have = have[0].get("server", None)
+    server_have = have[0][0].get("server", None)
+    vrf_have = have[0][1].get("server", None)
     source_int_have = have[0].get("source_int", None)
     acl_have = have[0].get("acl", None)
     logging_have = have[0].get("logging", None)
@@ -243,6 +256,7 @@ def map_obj_to_commands(want, have, module):
     key_id_have = have[0].get("key_id", None)
     for w in want:
         server = w["server"]
+        vrf = w["vrf"]
         source_int = w["source_int"]
         acl = w["acl"]
         logging = w["logging"]
@@ -300,6 +314,7 @@ def map_obj_to_commands(want, have, module):
 def main():
     argument_spec = dict(
         server=dict(),
+        vrf=dict(),
         source_int=dict(),
         acl=dict(),
         logging=dict(type="bool", default=False),
