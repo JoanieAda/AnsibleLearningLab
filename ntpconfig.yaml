@@ -1,7 +1,7 @@
 ---
-- name: Generate NTP config
+- name: Generate NTP config for all devices
   connection: network_cli
-  hosts: s1-rtr01
+  hosts: dist,routers
  
   tasks:
     - include_vars:
@@ -21,12 +21,27 @@
       with_items: "{{ ntps }}"
       when: ntps is defined
 
-#    - name: Push Vlan config
-#      ios_config:
-#        src: "templates/vlans.j2"
-#      when: vrfs is defined
-#      register: vrf_config_results
-#
-#    - set_fact: vrf_config_changes={{ vrf_config_results | to_nice_yaml }}
 
-...
+
+- name: Generate NTP config for Core
+  connection: network_cli
+  hosts: cores
+
+  tasks:
+    - include_vars:
+        file: configs/ntp/core.yaml
+
+#    - name: Generate Vrf config
+#      template:
+#        src: "templates/vrfs.j2"
+#        dest: "config_files/{{ inventory_hostname }}.config"
+#      when: vrfs is defined
+
+    - name: Push VRF config
+      ios_ntp:
+        server: "{{ item.server }}"
+        vrf: "{{ item.vrf }}"
+        source_int: Loopback0
+      with_items: "{{ ntps }}"
+      when: ntps is defined
+
