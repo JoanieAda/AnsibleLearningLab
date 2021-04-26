@@ -1,0 +1,24 @@
+---
+- name: gather and print IOS/NXOS facts
+  connection: network_cli
+  hosts: s1-dc01
+  tasks:
+    - name: gather IOS facts
+      cisco.ios.ios_facts:
+        gather_subset: all
+      register: ios_facts
+      when: ansible_network_os == 'ios'
+
+    - name: gather NXOS facts
+      cisco.nxos.nxos_facts:
+        gather_subset: all
+      register: nxos_facts
+      when: ansible_network_os == 'nxos'
+
+    - name: show IOS facts
+      debug:
+        var: nxos_facts
+
+    
+
+...

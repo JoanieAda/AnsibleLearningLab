@@ -1,0 +1,22 @@
+---
+- name: gather and print IOS facts
+  connection: network_cli
+  hosts: s1-core01
+  tasks:
+    - name: gather IOS facts
+      cisco.ios.ios_facts:
+        gather_subset:
+          - 'interfaces'
+      register: iosfacts
+
+    - name: show facts
+      debug:
+        var: iosfacts
+
+    - name: iterate facts
+      debug:
+        var: "{{ item }}"
+      with_dict: "{{ iosfacts.ansible_facts.ansible_net_interfaces }}"
+      when: item.value.description == "OnlyShowThis" 
+
+...

@@ -4,10 +4,10 @@ vlan {{ vlan.vid }}
  name {{ vlan.name }}
 
 {%	 if vlan.interface is defined %}
-interface vlan{{ vlan.vid }}
+interface Vlan{{ vlan.vid }}
  description {{ vlan.interface.description }}
 {%		 if vlan.interface.vrf is defined %}
- ip vrf forwarding {{ vlan.interface.vrf }}
+ vrf forwarding {{ vlan.interface.vrf }}
 {% 		 endif %}
  ip address {{ vlan.interface.ip.address | ipaddr('address') }} {{ vlan.interface.ip.address | ipaddr('netmask') }}
 {%	 endif %}
