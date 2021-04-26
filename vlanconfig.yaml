@@ -1,0 +1,36 @@
+---
+- name: Generate Vlans config
+  connection: network_cli
+  hosts: all
+ 
+  tasks:
+    - name: Validate vlans yaml file exits
+      stat:
+        path: "configs/vlans/{{ inventory_hostname }}.yaml"
+      register: vlans_yaml
+    - include_vars:
+        file: "configs/vlans/{{ inventory_hostname }}.yaml"
+      when: vlans_yaml.stat.exists == True
+
+    - name: Generate Vlan config
+      template:
+        src: "templates/vlans.j2"
+        dest: "config_files/{{ inventory_hostname }}.config"
+      when: vlans is defined
+
+    - name: Push Vlan config
+      ios_config:
+        src: "templates/vlans.j2"
+      when: vlans is defined
+      register: vlan_config_results
+    - set_fact: vlan_config_changes={{ vlan_config_results | to_nice_yaml }}
+
+    - name: Push Vlan configs with module
+      cisco.ios.ios_vlans:
+        config:
+        - name: "{{ item.name }}"
+          vlan_id: "{{ item.vid }}"
+      with_items: "{{ vlans }}"
+      when: vlans is defined
+
+...
