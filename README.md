@@ -10,5 +10,5 @@ ansible-galaxy collection install cisco.ios
 ```
 
 ntpconfig.yaml is currently using ios_ntp under the local ./modules/\
-Pending [PR#307](https://github.com/ansible-collections/cisco.ios/pull/307) in cisco.ios
+Pending [PR#291](https://github.com/ansible-collections/cisco.ios/pull/291) in cisco.ios
 
