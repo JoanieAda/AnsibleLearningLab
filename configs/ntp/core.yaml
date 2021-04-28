@@ -2,5 +2,7 @@
 ntps:
   - server: 172.16.255.2
     vrf: mgmt
+  - server: 1.1.1.1
+    vrf: ""
 
 ...

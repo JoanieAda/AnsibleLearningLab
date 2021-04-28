@@ -1,0 +1,19 @@
+---
+- name: Generate NTP config for Core
+  connection: network_cli
+  hosts: s1-core01
+
+  tasks:
+    - include_vars:
+        file: configs/ntp/core.yaml
+    - name: Push VRF config to core switches
+      ios_ntp_lvrfrc87:
+        server: "{{ item.server }}"
+        vrf: "{{ item.vrf }}"
+        source_int: Loopback0
+        #state: absent
+      with_items: "{{ ntps }}"
+      when: ntps is defined
+
+
+...
