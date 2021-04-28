@@ -28,6 +28,8 @@ description:
 version_added: 1.0.0
 author:
 - Federico Olivieri (@Federico87)
+contributors:
+- Joanie Sylvain (@JoanieAda)
 options:
   server:
     description:
@@ -206,16 +208,12 @@ def map_config_to_obj(module):
             auth = parse_auth(dest)
             auth_key = parse_auth_key(line, dest)
             key_id = parse_key_id(line, dest)
-            #vrf = parse_server(line, dest)
 
             if server:
                 if server[0] == None:
                     server_list.append((server[0], server[1]))
                 else:
                     server_list.append((server[0].split()[1], server[1]))
-            
-            #if not vrf and server:
-            #    server_list.append(server)
             
             if source_int:
                 obj_dict["source_int"] = source_int
@@ -272,7 +270,6 @@ def map_obj_to_commands(want, have, module):
     auth_have = have[0].get("auth", None)
     auth_key_have = have[0].get("auth_key", None)
     key_id_have = have[0].get("key_id", None)
-    vrf_have = have[0].get("vrf", None)
 
     for w in want:
 
